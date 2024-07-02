@@ -1,0 +1,145 @@
+@font-face {
+    font-family: 'Reddit-Mono';
+    font-weight: 900;
+    src: url(Asset/Fonts/redditMonoStatic/RedditMono-Black.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'Reddit-Mono';
+    font-weight: 700;
+    src: url(Asset/Fonts/redditMonoStatic/RedditMono-Bold.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'Reddit-Mono';
+    font-weight: 800;
+    src: url(Asset/Fonts/redditMonoStatic/RedditMono-ExtraBold.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'Reddit-Mono';
+    font-weight: 200;
+    src: url(Asset/Fonts/redditMonoStatic/RedditMono-ExtraLight.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'Reddit-Mono';
+    font-weight: 300;
+    src: url(Asset/Fonts/redditMonoStatic/RedditMono-Light.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'Reddit-Mono';
+    font-weight: 500;
+    src: url(Asset/Fonts/redditMonoStatic/RedditMono-Medium.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'Reddit-Mono';
+    font-weight: 400;
+    src: url(Asset/Fonts/redditMonoStatic/RedditMono-Regular.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'Reddit-Mono';
+    font-weight: 600;
+    src: url(Asset/Fonts/redditMonoStatic/RedditMono-SemiBold.ttf) format('truetype');
+}
+
+body{
+    height: 100vh;
+    width: 100vw;
+    display: grid;
+    grid-auto-flow: row;
+    align-content: center;
+}
+
+.pageContentContainer, .pageContentContainer2{
+    display: grid;
+    grid-template-columns: 50%;
+    align-items: center;
+    justify-content: center;
+    font-family: "Reddit-Mono";
+}
+
+.pageContentContainer2{
+    grid-template-columns: auto;
+    grid-auto-flow: column;
+    gap: 100px;
+}
+
+.playerInfo{
+    display: grid;
+    gap: 80px;
+}
+
+.pageContentContainer{
+    gap: 30px;
+}
+
+.pageContentContainer h2{
+    text-align: center;
+    margin: 0px;
+}
+
+button{
+    font-family: "Reddit-Mono";
+}
+
+#playerInfoForm{
+    display: grid;
+    gap: 30px;
+}
+
+#playerInfoForm button{
+    width: 20%;
+    justify-self: center;
+} 
+
+#playerInfoForm > div> div {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    justify-items: center;
+    align-items: center;
+    gap: 30px;
+} 
+
+#playerInfoForm > div > div > label{
+    justify-self: end;
+}
+
+#playerInfoForm > div > div > input,
+#playerInfoForm > div > div > select{
+    justify-self: start;
+    box-sizing: border-box;
+    width: 60%;
+}
+
+#playerInfoForm > div > div > select > option{
+    text-align: center;
+}
+
+#playerInfoForm > div{
+    display: grid;
+    gap: 30px;
+}
+
+
+.board{
+    background-color: antiquewhite;
+    border-collapse: collapse;
+}
+
+
+.board td{
+    width: 20vh;
+    height: 20vh;
+    border-style: solid;
+    border-color: black;
+    border-width: 2px;
+}
+
+.board td:hover{
+    cursor:pointer;
+}
+
