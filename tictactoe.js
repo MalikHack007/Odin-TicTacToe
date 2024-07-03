@@ -328,6 +328,7 @@ function newGame(){
                 }
     
                 //check diagonally
+                //one diagonal
                 if(rowIndex-2 >= 0 && colIndex-2 >= 0){
                     if(board[rowIndex][colIndex] == board[rowIndex-1][colIndex-1] && board[rowIndex-1][colIndex-1] == board[rowIndex-2][colIndex-2]){
                         player.roundsWon++;
@@ -382,6 +383,85 @@ function newGame(){
     
                 if (rowIndex + 2 <= 2 && colIndex+2 <= 2){
                     if(board[rowIndex][colIndex] == board[rowIndex+1][colIndex+1] && board[rowIndex+1][colIndex+1] == board[rowIndex+2][colIndex+2]){
+                        player.roundsWon++;
+                        player.winnerOfThisRound = true;
+                        grids.forEach((grid)=>{
+                            if(grid.getAttribute("row") == rowIndex+1 && grid.getAttribute("col") == colIndex+1){
+                                //fill it with whoever's token
+                                grid.innerHTML = player.token;
+                            }
+                        })
+                        alert(`${player.name} has won this round!` );
+                        if(player1.roundsWon == 3){
+                            alert(`${player1.name} has won the game!`);
+                            player1.win = true;
+                            ticTacToe.initializeGame();
+                        }
+
+                        else if(player2.roundsWon == 3){
+                            alert(`${Player2.name} has won the game!`);
+                            player2.win = true;
+                            ticTacToe.initializeGame();
+                        }
+                        return;
+                    }
+                }
+                //the other diagonal
+
+                if(rowIndex - 2 >= 0 && colIndex + 2 <= 2){
+                    if(board[rowIndex][colIndex] == board[rowIndex-1][colIndex+1] && board[rowIndex-1][colIndex+1] == board[rowIndex-2][colIndex+2]){
+                        player.roundsWon++;
+                        player.winnerOfThisRound = true;
+                        grids.forEach((grid)=>{
+                            if(grid.getAttribute("row") == rowIndex+1 && grid.getAttribute("col") == colIndex+1){
+                                //fill it with whoever's token
+                                grid.innerHTML = player.token;
+                            }
+                        })
+                        alert(`${player.name} has won this round!` );
+                        if(player1.roundsWon == 3){
+                            alert(`${player1.name} has won the game!`);
+                            player1.win = true;
+                            ticTacToe.initializeGame();
+                        }
+
+                        else if(player2.roundsWon == 3){
+                            alert(`${Player2.name} has won the game!`);
+                            player2.win = true;
+                            ticTacToe.initializeGame();
+                        }
+                        return;
+                    }
+                }
+
+                if(rowIndex + 1 <= 2 && colIndex - 1 >= 0 && rowIndex - 1 >= 0 && colIndex + 1 <= 2){
+                    if(board[rowIndex][colIndex] == board[rowIndex+1][colIndex-1] && board[rowIndex+1][colIndex-1] == board[rowIndex-1][colIndex+1]){
+                        player.roundsWon++;
+                        player.winnerOfThisRound = true;
+                        grids.forEach((grid)=>{
+                            if(grid.getAttribute("row") == rowIndex+1 && grid.getAttribute("col") == colIndex+1){
+                                //fill it with whoever's token
+                                grid.innerHTML = player.token;
+                            }
+                        })
+                        alert(`${player.name} has won this round!` );
+                        if(player1.roundsWon == 3){
+                            alert(`${player1.name} has won the game!`);
+                            player1.win = true;
+                            ticTacToe.initializeGame();
+                        }
+
+                        else if(player2.roundsWon == 3){
+                            alert(`${Player2.name} has won the game!`);
+                            player2.win = true;
+                            ticTacToe.initializeGame();
+                        }
+                        return;
+                    }
+                }
+
+                if(rowIndex + 2 <= 2 && colIndex - 2 >= 0){
+                    if(board[rowIndex][colIndex] == board[rowIndex+1][colIndex-1] && board[rowIndex+1][colIndex-1] == board[rowIndex+2][colIndex-2]){
                         player.roundsWon++;
                         player.winnerOfThisRound = true;
                         grids.forEach((grid)=>{
