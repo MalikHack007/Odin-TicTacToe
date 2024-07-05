@@ -6,54 +6,108 @@ function newGame(){
     function initializeGame(){
         //load the initial page
         let startingPage = 
-        `    <div class="pageContentContainer">
-                <h2>Tic Tac Toe</h2>
-                <form action="#" method="post" id="playerInfoForm">
-                    <div>
-                        <div>
-                            <label for="player1Name">Player One's Name:</label>
-                            <input type="text" id="player1Name" name="player1Token">
-                        </div>
-                        <div>
-                            <label for="player1Token">Select a token:</label>
-                            <select name="player1Token" id="player1Token">
-                                <option value="">Please Select a Token</option>
-                                <option value="X">X</option>
-                                <option value="O">O</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label for="player2Name">Player Two's Name:</label>
-                            <input type="text" id="player2Name">
-                        </div>
-                        <div>
-                            <label for="player2Token">Select a token:</label>
-                            <select name="player2Token" id="player2Token">
-                                <option value="">Please Select a Token</option>
-                                <option value="X">X</option>
-                                <option value="O">O</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div><button id="startNewGame" type="submit">Start Game</button></div>
-                </form>
-            </div>`
+        `
+    <div class="pageContentContainer">
+        <h2>Tic Tac Toe</h2>
+        <form action="#" method="post" id="playerInfoForm">
+            <div>
+                <div class="formLine">
+                    <label for="player1Name">*Player One's Name:</label>
+                    <input type="text" id="player1Name" name="player1Token" class="requiredUserInput">
+                    <div class="error-message"></div>
+                </div>
+                <div class="formLine">
+                    <label for="player1Token">*Select a token:</label>
+                    <select name="player1Token" id="player1Token" class="requiredUserInput">
+                        <option value="">Please Select a Token</option>
+                        <option value="X">X</option>
+                        <option value="O">O</option>
+                    </select>
+                    <div class="error-message"></div>
+                </div>
+                <div class="formLine">
+                    <label for="player2Name">*Player Two's Name:</label>
+                    <input type="text" id="player2Name" class="requiredUserInput">
+                    <div class="error-message"></div>
+                </div>
+                <div class="formLine">
+                    <label for="player2Token">*Select a token:</label>
+                    <select name="player2Token" id="player2Token" class="requiredUserInput">
+                        <option value="">Please Select a Token</option>
+                        <option value="X">X</option>
+                        <option value="O">O</option>
+                    </select>
+                    <div class="error-message"></div>
+                </div>
+            </div>
+            <div><button id="startNewGame" type="submit">Start Game</button></div>
+        </form>
+    </div>
+        `
+
         
         document.body.innerHTML = startingPage;
     
         let startGameButton = document.querySelector("#startNewGame");
+        let player1TokenField = document.querySelector("#player1Token");
+        let player2TokenField = document.querySelector("#player2Token");
+        let requiredInputFields = document.querySelectorAll(".requiredUserInput");
         startGameButton.addEventListener("click", (e)=>{
             e.preventDefault();
-            console.log("executed");
-            let player1Name = document.querySelector("#player1Name").value;
-            let player1Token = document.querySelector("#player1Token").value;
-            let player2Name = document.querySelector("#player2Name").value;
-            let player2Token = document.querySelector("#player2Token").value;
-            player1 = createPlayer(player1Token, player1Name);
 
-            player2 = createPlayer(player2Token, player2Name);   
-            // console.log("values read");
-            this.playNewGame();
+            function checkFormValidity(){
+                let formIsValid = true;
+                //check for empty fields
+                requiredInputFields.forEach((inputField)=>{
+                    if(!inputField.value){
+                        inputField.classList.add('error');
+                        inputField.parentElement.querySelector(".error-message").innerHTML = 
+                        "This field is required."
+                    }
+
+                    else if (inputField.value){
+                        //take away the 'error' class
+                        inputField.classList.remove('error');
+                        inputField.parentElement.querySelector('.error-message').innerHTML = "";
+                    }
+                })
+                //make sure token fields have different values when both have been filled.
+                if(player1TokenField.value == player2TokenField.value && player1TokenField.value && player2TokenField.value){
+                    player1TokenField.classList.add("error");
+                    player2TokenField.classList.add("error");
+                    player1TokenField.parentElement.querySelector(".error-message").innerHTML = "Tokens cannot be the same.";
+                    player2TokenField.parentElement.querySelector(".error-message").innerHTML = "Tokens cannot be the same.";
+                }
+
+                else if (player1TokenField.value != player2TokenField.value && player1TokenField.value && player2TokenField.value){
+                    player1TokenField.classList.remove("error");
+                    player2TokenField.classList.remove("error");
+                    player1TokenField.parentElement.querySelector(".error-message").innerHTML = "";
+                    player2TokenField.parentElement.querySelector(".error-message").innerHTML = "";
+                }
+
+                //check for error
+                requiredInputFields.forEach((inputField)=>{
+                    if(inputField.classList.contains('error')){
+                        formIsValid = false;
+                    }
+                })
+
+                return formIsValid;
+
+            }
+            
+            if(checkFormValidity()){
+                let player1Name = document.querySelector("#player1Name").value;
+                let player1Token = document.querySelector("#player1Token").value;
+                let player2Name = document.querySelector("#player2Name").value;
+                let player2Token = document.querySelector("#player2Token").value;
+                player1 = createPlayer(player1Token, player1Name);
+    
+                player2 = createPlayer(player2Token, player2Name);   
+                // console.log("values read");
+                this.playNewGame();
+            }
         })
     }
 

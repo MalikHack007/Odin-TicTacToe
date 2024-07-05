@@ -164,3 +164,23 @@ svg.O{
     width: 70%;
 }
 
+input.error, select.error{
+    border-color: red;
+}
+
+.formLine{
+    position: relative;
+}
+
+.error-message{
+    position: absolute;
+    bottom: 100%;
+    left: 53%;
+    color: red;
+    font-size: 0.75em;
+}
+
+input:hover{
+    cursor: text;
+}
+

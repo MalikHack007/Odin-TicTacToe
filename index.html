@@ -12,29 +12,33 @@
         <h2>Tic Tac Toe</h2>
         <form action="#" method="post" id="playerInfoForm">
             <div>
-                <div>
-                    <label for="player1Name">Player One's Name:</label>
-                    <input type="text" id="player1Name" name="player1Token">
+                <div class="formLine">
+                    <label for="player1Name">*Player One's Name:</label>
+                    <input type="text" id="player1Name" name="player1Token" class="requiredUserInput">
+                    <div class="error-message"></div>
                 </div>
-                <div>
-                    <label for="player1Token">Select a token:</label>
-                    <select name="player1Token" id="player1Token">
+                <div class="formLine">
+                    <label for="player1Token">*Select a token:</label>
+                    <select name="player1Token" id="player1Token" class="requiredUserInput">
                         <option value="">Please Select a Token</option>
                         <option value="X">X</option>
                         <option value="O">O</option>
                     </select>
+                    <div class="error-message"></div>
                 </div>
-                <div>
-                    <label for="player2Token">Select a token:</label>
-                    <select name="player2Token" id="player2Token">
+                <div class="formLine">
+                    <label for="player2Name">*Player Two's Name:</label>
+                    <input type="text" id="player2Name" class="requiredUserInput">
+                    <div class="error-message"></div>
+                </div>
+                <div class="formLine">
+                    <label for="player2Token">*Select a token:</label>
+                    <select name="player2Token" id="player2Token" class="requiredUserInput">
                         <option value="">Please Select a Token</option>
                         <option value="X">X</option>
                         <option value="O">O</option>
                     </select>
-                </div>
-                <div>
-                    <label for="player2Name">Player Two's Name:</label>
-                    <input type="text" id="player2Name">
+                    <div class="error-message"></div>
                 </div>
             </div>
             <div><button id="startNewGame" type="submit">Start Game</button></div>
