@@ -368,7 +368,24 @@ function newGame(){
                        }
            
                        if(player1.winnerOfThisRound == true || player2.winnerOfThisRound == true){
-                           this.initializeRound();
+                        if(player1.winnerOfThisRound == true){
+                            setTimeout(()=>{
+                                alert(`${player1.name} has won this round!` );
+                            }, 200);
+
+                        }
+                        else{
+                            setTimeout(()=>{
+                                alert(`${player2.name} has won this round!` );
+                            }, 200);
+                        }
+                        setTimeout(()=>{
+                            this.initializeRound();
+                        }, 500);
+
+
+
+
                        }
                        
        
@@ -386,10 +403,16 @@ function newGame(){
             grids.forEach((grid)=>{
                 if(grid.getAttribute("row") == rowIndex+1 && grid.getAttribute("col") == colIndex+1){
                     //fill it with whoever's token
-                    grid.innerHTML = player.token;
+                    if(player.token == player1.token){
+                        grid.innerHTML = player1TokenSVG;
+                    }
+
+                    else{
+                        grid.innerHTML = player2TokenSVG;
+                    }
                 }
             })
-            alert(`${player.name} has won this round!` );
+
             //determine if a game winner has been born
             if(player1.roundsWon == 3){
                 alert(`${player1.name} has won the game!`);
